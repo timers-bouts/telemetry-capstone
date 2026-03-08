@@ -1,4 +1,5 @@
 #include <bit>
+#include <stdexcept>
 
 #include "telemetry/PacketWriter.h"
 

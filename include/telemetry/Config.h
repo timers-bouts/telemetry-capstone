@@ -1,8 +1,9 @@
 #pragma once
 
-#include <string>
-#include <optional>
 #include <cstddef>
+#include <cstdint>
+#include <optional>
+#include <string>
 
 namespace telemetry {
 
