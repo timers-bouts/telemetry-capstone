@@ -17,7 +17,7 @@ ctest --output-on-failure
 
 ---
 
-## CLI Commands (once implemented)
+## CLI Commands
 
 ### Generate frames (console only)
 ```bash
