@@ -17,7 +17,9 @@ static void cleanup() {
 
 static void test_write_and_read_back() {
     cleanup();
-    telemetry::Logger logger("test_recorder.log", telemetry::LogLevel::Warn);
+    const std::filesystem::path logger_path = "test_recorder.log";
+    std::filesystem::remove(logger_path);
+    telemetry::Logger logger(logger_path, telemetry::LogLevel::Warn);
 
     {
         telemetry::TelemetryRecorder recorder(kTestFile, logger,
@@ -37,11 +39,14 @@ static void test_write_and_read_back() {
         test_fail("TelemetryRecorder/Reader roundtrip failed");
     }
     cleanup();
+    std::filesystem::remove(logger_path);
 }
 
 static void test_clean_eof() {
     cleanup();
-    telemetry::Logger logger("test_recorder.log", telemetry::LogLevel::Warn);
+    const std::filesystem::path logger_path = "test_recorder.log";
+    std::filesystem::remove(logger_path);
+    telemetry::Logger logger(logger_path, telemetry::LogLevel::Warn);
 
     {
         telemetry::TelemetryRecorder recorder(kTestFile, logger,
@@ -61,6 +66,7 @@ static void test_clean_eof() {
         test_fail("TelemetryReader did not signal clean EOF");
     }
     cleanup();
+    std::filesystem::remove(logger_path);
 }
 
 int main() {

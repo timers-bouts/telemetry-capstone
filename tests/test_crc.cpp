@@ -10,16 +10,33 @@ static void test_empty_input() {
     // CRC of empty span should be deterministic
     std::vector<uint8_t> data{};
     uint32_t result = telemetry::crc32(data);
-    // TODO: compute expected value and assert equality
-    // For now: just verify it doesn't crash
-    (void)result;
-    test_pass("crc32 empty input does not crash");
+    uint32_t expected_value = 0x00000000;
+    if (result == expected_value) {
+        test_pass("crc32 empty input");
+    } else {
+        test_fail("crc32 empty input expected: " +
+                    std::format("0x{:08X}", expected_value) +
+                    " but got: " +
+                    std::format("0x{:08X}", result)
+        );
+    }
+    
 }
 
 static void test_known_value() {
-    // TODO: Pick a known input and precompute the expected CRC.
-    // Example: crc32({0x01, 0x02, 0x03}) should equal <precomputed value>
-    test_pass("crc32 known value — TODO: add expected value");
+    std::vector<uint8_t> data = {0x01, 0x02, 0x03};
+    uint32_t result = telemetry::crc32(data);
+    uint32_t expected_value = 0xE4F296AE;
+    if (result == expected_value) {
+        test_pass("crc32 known value — 0xE4F296AE");
+    } else {
+        test_fail("crc32 known value. Expected: " +
+                    std::format("0x{:08X}", expected_value) +
+                    " but got: " +
+                    std::format("0x{:08X}", result)
+        );
+    }
+
 }
 
 static void test_different_inputs_differ() {
