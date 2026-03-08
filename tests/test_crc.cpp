@@ -1,8 +1,9 @@
 #include "test_utils.h"
 #include "telemetry/CRC.h"
 
-#include <vector>
 #include <cstdint>
+#include <format>
+#include <vector>
 
 // Tests for telemetry::crc32()
 
