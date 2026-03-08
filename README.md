@@ -1,5 +1,7 @@
 # Telemetry Capstone
 
+[![CI](https://github.com/timers-bouts/telemetry-capstone/actions/workflows/ci.yml/badge.svg)](https://github.com/timers-bouts/telemetry-capstone/actions/workflows/ci.yml)
+
 A C++20 binary telemetry system for simulating, recording, replaying, and exporting sensor data streams. Built as a portfolio project demonstrating systems programming patterns including custom binary serialization, CRC32 integrity verification, and a layered CLI architecture.
 
 ---
